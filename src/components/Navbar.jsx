@@ -90,7 +90,11 @@ const Navbar = () => {
               <Squares2X2Icon className="h-6 w-6" />
             </Link>
 
-            <Link to="/notifications" className="relative p-1.5 rounded-full hover:bg-[#C1D8C3]">
+            <Link
+              to="/notifications"
+              title="Notifications"
+              className="relative p-1.5 rounded-full hover:bg-[#C1D8C3]"
+            >
               <BellSolid className="h-6 w-6" />
               {unreadCount > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
@@ -99,7 +103,11 @@ const Navbar = () => {
               )}
             </Link>
 
-            <Link to="/wishlist" className="relative p-1.5 rounded-full hover:bg-[#C1D8C3]">
+            <Link
+              to="/wishlist"
+              title="Wishlist"
+              className="relative p-1.5 rounded-full hover:bg-[#C1D8C3]"
+            >
               <HeartSolid className="h-6 w-6" />
               {wishlistCount > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 bg-pink-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
@@ -108,7 +116,11 @@ const Navbar = () => {
               )}
             </Link>
 
-            <Link to="/cart" className="relative p-1.5 rounded-full hover:bg-[#C1D8C3]">
+            <Link
+              to="/cart"
+              title="Cart"
+              className="relative p-1.5 rounded-full hover:bg-[#C1D8C3]"
+            >
               <ShoppingCartSolid className="h-6 w-6" />
               {cartItemsCount > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
@@ -158,10 +170,15 @@ const Navbar = () => {
 
           {/* Icons */}
           <div className="flex justify-center gap-6 text-white">
-            <Link to="/" onClick={() => setMenuOpen(false)}>
+            <Link to="/" title="Products" onClick={() => setMenuOpen(false)}>
               <Squares2X2Icon className="h-7 w-7" />
             </Link>
-            <Link to="/notifications" onClick={() => setMenuOpen(false)} className="relative">
+            <Link
+              to="/notifications"
+              title="Notifications"
+              onClick={() => setMenuOpen(false)}
+              className="relative"
+            >
               <BellSolid className="h-7 w-7" />
               {unreadCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
@@ -169,7 +186,12 @@ const Navbar = () => {
                 </span>
               )}
             </Link>
-            <Link to="/wishlist" onClick={() => setMenuOpen(false)} className="relative">
+            <Link
+              to="/wishlist"
+              title="Wishlist"
+              onClick={() => setMenuOpen(false)}
+              className="relative"
+            >
               <HeartSolid className="h-7 w-7" />
               {wishlistCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-pink-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
@@ -177,7 +199,12 @@ const Navbar = () => {
                 </span>
               )}
             </Link>
-            <Link to="/cart" onClick={() => setMenuOpen(false)} className="relative">
+            <Link
+              to="/cart"
+              title="Cart"
+              onClick={() => setMenuOpen(false)}
+              className="relative"
+            >
               <ShoppingCartSolid className="h-7 w-7" />
               {cartItemsCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-green-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
