@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // ✅ Add this for client-side routing
 
 const Footer = () => {
   return (
@@ -16,9 +17,15 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold mb-4">Quick Links</h3>
           <ul>
-            <li><a href="/" className="hover:text-yellow-400">Products</a></li>
-            <li><a href="/wishlist" className="hover:text-yellow-400">Wishlist</a></li>
-            <li><a href="/cart" className="hover:text-yellow-400">Cart</a></li>
+            <li>
+              <Link to="/" className="hover:text-yellow-400">Products</Link>
+            </li>
+            <li>
+              <Link to="/wishlist" className="hover:text-yellow-400">Wishlist</Link>
+            </li>
+            <li>
+              <Link to="/cart" className="hover:text-yellow-400">Cart</Link>
+            </li>
           </ul>
         </div>
 
@@ -43,7 +50,7 @@ const Footer = () => {
               type="email"
               placeholder="Your email"
               required
-              className="w-full p-2 rounded mb-2 text-white"
+              className="w-full p-2 rounded mb-2 text-white bg-gray-800"
             />
             <button
               type="submit"
@@ -59,7 +66,7 @@ const Footer = () => {
           <h3 className="font-semibold mb-4">Contact Us</h3>
           <p>Phone: +1 234 567 890</p>
           <p>Email: supportcartzilla@example.com</p>
-          <p>Address: 123 Park St, Banglore, India</p>
+          <p>Address: 123 Park St, Bangalore, India</p>
         </div>
       </div>
 
@@ -71,4 +78,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
