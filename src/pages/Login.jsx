@@ -1,25 +1,33 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
+// TODO: Import loginUser action from authSlice
 import { loginUser } from "../redux/slices/authSlice";
+// TODO: Import addNotification action from notificatrionSlice
 import { addNotification } from "../redux/slices/notificationSlice";
 
 const Login = () => {
+  // TODO: Initialize useDispatch for dispatching actions
   const [email, setEmail] = useState("eve.holt@reqres.in"); // default test email
   const [password, setPassword] = useState("");
 
+  // TODO: Initialize useDispatch for dispatching actions
   const dispatch = useDispatch();
+  // TODO: Initialize useNavigate for navigation
   const navigate = useNavigate();
   const location = useLocation();
 
+  // TODO: Get authentication status, error, and token from Redux store using useSelector
   const { status, error, token } = useSelector((state) => state.auth);
 
   // Redirect target after login (or root if none)
   const from = location.state?.from || "/";
 
+   // TODO: Implement handleLogin function to dispatch loginUser action and navigate on success
   const handleLogin = (e) => {
     e.preventDefault();
-
+    // Dispatch loginUser action
+    // Navigate to home page if login is successful
     dispatch(loginUser({ email, password })).then((result) => {
       if (result.meta.requestStatus === "fulfilled") {
         // Show success notification

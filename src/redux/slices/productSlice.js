@@ -4,6 +4,7 @@ import axios from "axios";
 
 // Async thunk to fetch all products
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async () => {
+  // Send GET request to API and return response data
   const response = await axios.get("https://fakestoreapi.com/products");
   return response.data;
 });
@@ -17,9 +18,11 @@ export const fetchCategories = createAsyncThunk("products/fetchCategories", asyn
 const productSlice = createSlice({
   name: "products",
   initialState: {
+    // TODO: Initialize items array to store fetched products
     items: [],
     categories: [],
     selectedCategory: "all",
+    // TODO: Initialize status for tracking API request state
     status: "idle",
     error: null,
   },
@@ -31,14 +34,20 @@ const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+    // TODO: Handle fetchProducts pending state
       .addCase(fetchProducts.pending, (state) => {
+         // Update status to loading
         state.status = "loading";
       })
+      // TODO: Handle fetchProducts fulfilled state and store fetched products
       .addCase(fetchProducts.fulfilled, (state, action) => {
+        // Update status and store products
         state.status = "succeeded";
         state.items = action.payload;
       })
+       // TODO: Handle fetchProducts rejected state
       .addCase(fetchProducts.rejected, (state, action) => {
+        // Update status to failed
         state.status = "failed";
         state.error = action.error.message;
       })

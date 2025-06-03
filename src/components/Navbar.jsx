@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+// TODO: Import logout action from authSlice
 import { logout } from "../redux/slices/authSlice";
+// TODO: Import clearCart action from cartSlice
 import { clearCart } from "../redux/slices/cartSlice";
 
 import {
@@ -16,9 +18,13 @@ import {
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const Navbar = () => {
+  // TODO: Initialize dispatch using useDispatch
   const dispatch = useDispatch();
+
+  // TODO: Initialize navigate using useNavigate
   const navigate = useNavigate();
 
+  // TODO: Get authentication token from Redux store using useSelector
   const token = useSelector((state) => state.auth.token);
   const cartItemsCount = useSelector((state) =>
     state.cart.reduce((total, item) => total + item.quantity, 0)
@@ -30,9 +36,13 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // TODO: Implement handleLogout function to dispatch logout and clearCart actions, then navigate to login
   const handleLogout = () => {
+     // Dispatch logout action
     dispatch(logout());
+     // Dispatch clearCart action
     dispatch(clearCart());
+    // Navigate to login page
     navigate("/login");
   };
 
@@ -214,6 +224,7 @@ const Navbar = () => {
             </Link>
           </div>
 
+           {/* Right Side - Login/Logout Button */}
           {/* Auth */}
           <div>
             {!token ? (

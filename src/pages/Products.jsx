@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+// TODO: Import fetchProducts action from productSlice
 import { fetchProducts } from "../redux/slices/productSlice";
+// TODO: Import addToCart action from cartSlice
 import { addToCart } from "../redux/slices/cartSlice";
 import { addToWishlist, removeFromWishlist } from "../redux/slices/wishlistSlice";
 import { setBuyNowItem } from "../redux/slices/buyNowSlice";
@@ -15,14 +17,18 @@ import {
 import { HeartIcon as HeartSolid } from "@heroicons/react/24/solid";
 
 const Products = () => {
+  // TODO: Initialize useDispatch for dispatching actions
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // TODO: Get products data and status from Redux store using useSelector
   const { items, status, selectedCategory } = useSelector((state) => state.products);
   const cart = useSelector((state) => state.cart);
   const wishlistItems = useSelector((state) => state.wishlist.items);
 
+  // TODO: Fetch products from API when component mounts
   useEffect(() => {
+    // Dispatch fetchProducts action
     dispatch(fetchProducts());
   }, [dispatch]);
 
@@ -35,11 +41,13 @@ const Products = () => {
     <div id="products-section" className="container mx-auto p-6">
       <h2 className="text-3xl font-bold text-center mb-6 text-[#FFA725]">Products</h2>
 
+      {/* Loading State */}
       {status === "loading" && <p className="text-center text-gray-500">Loading...</p>}
       {filteredProducts.length === 0 && status === "succeeded" && (
         <p className="text-center text-gray-500">No products found in this category.</p>
       )}
 
+      {/* Products Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map((product) => {
           const isInCart = cart.some((item) => item.id === product.id);
@@ -88,7 +96,7 @@ const Products = () => {
                   </button>
                 </Link>
 
-                {/* Add to Cart / Go to Cart */}
+                {/* TODO: Implement Add to Cart / Go to Cart functionality */}
                 {isInCart ? (
                   <button
                     onClick={() => navigate("/cart")}

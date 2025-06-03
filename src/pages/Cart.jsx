@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+// TODO: Import removeFromCart, increaseQuantity, and decreaseQuantity actions from cartSlice
 import {
   removeFromCart,
   increaseQuantity,
@@ -8,7 +9,9 @@ import {
 } from "../redux/slices/cartSlice";
 
 const Cart = () => {
+  // TODO: Get cart items from Redux Store using useSelector
   const cart = useSelector((state) => state.cart);
+  // TODO: Initialize useDispatch for dispatching actions
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,6 +32,7 @@ const Cart = () => {
                 key={item.id}
                 className="flex items-center justify-between bg-[#FFF5E4] p-4 rounded-lg shadow-md border border-[#C1D8C3]"
               >
+                {/* Product Image & Details */}
                 <div className="flex items-center gap-4 w-2/3">
                   <img
                     src={item.image}
@@ -43,6 +47,7 @@ const Cart = () => {
                   </div>
                 </div>
 
+                {/* TODO: Implement Quantity Controls - Increase & Decrease */}
                 <div className="flex items-center gap-2 w-1/3 justify-center">
                   <button
                     onClick={() => dispatch(decreaseQuantity(item.id))}
@@ -66,6 +71,7 @@ const Cart = () => {
                   </button>
                 </div>
 
+                {/* TODO: Implement Remove Button Functionality */}
                 <button
                   onClick={() => dispatch(removeFromCart(item.id))}
                   className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
